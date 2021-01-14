@@ -1,0 +1,75 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" 
+				   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" 
+				   xmlns:pro="http://www.liquibase.org/xml/ns/pro" 
+				   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+				   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.0.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+				   
+				   
+				   <changeSet id="1610464464_1" author="pratik.kiri">
+				      <createTable tableName="account">
+				      	<column name="id" type="varchar(36)">
+							<constraints nullable="false" />				      	
+				      	</column>
+				      	<column name="account_name" type="varchar(50)">
+							<constraints nullable="false" />				      	
+				      	</column>
+				      	<column name="account_type" type="varchar(20)">
+							<constraints nullable="false" />				      	
+				      	</column>
+				      	<column name="balanace_date" type="datetime">
+							<constraints nullable="false" />				      	
+				      	</column>
+				      	<column name="currency" type="varchar(10)">
+							<constraints nullable="false" />				      	
+				      	</column>
+				      	<column name="balance" type="decimal(10,2)">
+							<constraints nullable="false" />				      	
+				      	</column>
+				      	<column name="user_id" type="varchar(36)">
+							<constraints nullable="false" />				      	
+				      	</column>
+				      </createTable>
+				   </changeSet>
+				   
+				   <changeSet id="1610464464_2" author="pratik.kiri">
+				      <createTable tableName="transaction">
+				        <column name="id" type="varchar(36)">
+							<constraints nullable="false" />				      	
+				      	</column>
+				      	<column name="value_date" type="datetime">
+							<constraints nullable="false" />				      	
+				      	</column>
+				      	<column name="amount" type="decimal(10,2)">
+							<constraints nullable="false" />				      	
+				      	</column>
+				      	<column name="transaction_debit_credit" type="varchar(10)">
+							<constraints nullable="false" />				      	
+				      	</column>
+				      	<column name="narrative" type="varchar(36)">
+							<constraints nullable="false" />				      	
+				      	</column>
+				      	<column name="account_number" type="varchar(36)">
+							<constraints nullable="false" />				      	
+				      	</column>
+				      </createTable>
+				   </changeSet>
+				   
+				   <changeSet id="1610464464_3" author="pratik.kiri">
+				   	<addPrimaryKey columnNames="id" tableName="account"></addPrimaryKey>
+				   	<addPrimaryKey columnNames="id" tableName="transaction"></addPrimaryKey>
+				   </changeSet>
+				   
+				   <changeSet id="1610464464_4" author="pratik.kiri">
+				   	<addForeignKeyConstraint constraintName="FK_transaction_account_num" 
+				   							 referencedTableName="account"
+				   							 referencedColumnNames="id" 
+				   							 baseColumnNames="account_number" 
+				   							 baseTableName="transaction" 
+				   							 />
+				   </changeSet>
+				   
+				   <changeSet id="1610464464_5" author="pratik.kiri">
+				   		<sqlFile path="db/changelog/inserts.sql" />
+				   </changeSet>
+</databaseChangeLog>				   
