@@ -29,7 +29,7 @@ public class Transaction {
 	private String id;
 	
 	@Column(name = "value_date")
-	private Date valueDate;
+	private String valueDate;
 	
 	@Column(name = "amount")
 	private Double amount;

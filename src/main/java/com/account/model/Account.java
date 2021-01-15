@@ -33,7 +33,7 @@ public class Account {
 	private String accountType;
 	
 	@Column(name = "balanace_date")
-	private Date balanceDate;
+	private String balanceDate;
 	
 	@Column(name = "currency")
 	private String currency;

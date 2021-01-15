@@ -17,7 +17,7 @@
 				      	<column name="account_type" type="varchar(20)">
 							<constraints nullable="false" />				      	
 				      	</column>
-				      	<column name="balanace_date" type="datetime">
+				      	<column name="balanace_date" type="varchar(20)">
 							<constraints nullable="false" />				      	
 				      	</column>
 				      	<column name="currency" type="varchar(10)">
@@ -37,7 +37,7 @@
 				        <column name="id" type="varchar(36)">
 							<constraints nullable="false" />				      	
 				      	</column>
-				      	<column name="value_date" type="datetime">
+				      	<column name="value_date" type="varchar(20)">
 							<constraints nullable="false" />				      	
 				      	</column>
 				      	<column name="amount" type="decimal(10,2)">
