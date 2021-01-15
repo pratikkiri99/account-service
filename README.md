@@ -16,7 +16,7 @@
 
 -Below url is to get list of accounts for a given user
 
-GET http://localhost:8182/account-service/api/accounts?userId={userId}
+GET http://localhost:8080/account-service/api/accounts?userId={userId}
 
 userId can be either of userId1 or userId2 for valid accounts
 
@@ -24,7 +24,7 @@ userId can be either of userId1 or userId2 for valid accounts
 
 -Below url is to get list of transactions for given account
 
-GET http://localhost:8182/account-service/api/accounts/{accountNum}/transactions
+GET http://localhost:8080/account-service/api/accounts/{accountNum}/transactions
 
 accountNum could be any account Id that we receive in previous response for a user.
 
@@ -32,11 +32,11 @@ accountNum could be any account Id that we receive in previous response for a us
 
 Swagger-Docs
 
-http://localhost:8182/account-service/v2/api-docs
+http://localhost:8080/account-service/v2/api-docs
 
 Swagger-UI
 
-http://localhost:8182/account-service/swagger-ui.html
+http://localhost:8080/account-service/swagger-ui.html
 
    
     
