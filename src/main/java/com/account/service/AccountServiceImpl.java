@@ -15,6 +15,7 @@ import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static com.account.exception.Constants.*;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
@@ -70,6 +71,12 @@ public class AccountServiceImpl implements AccountService {
                 if (transactions != null && !transactions.isEmpty()) {
                     log.warn("for accountNum {} returning transaction list of size {}",
                             accountNum, transactions.size());
+
+                    transactions.forEach(transaction -> {
+                        transaction.getAccount().setId(hyphenIt(accountNum, 3));
+                    });
+
+                    // creating ref back link
                     String userId = account.getUserId();
                     Link link = linkTo(methodOn(AccountController.class).getAccountsForUser(userId)).withRel("getAccountsForUser");
                     Resources<Transaction> result = new Resources<Transaction>(transactions, link);
@@ -86,5 +93,20 @@ public class AccountServiceImpl implements AccountService {
             log.warn(INVALID_ACCOUNT,accountNum);
             throw new ServiceException(INVALID_ACCOUNT);
         }
+    }
+
+    String hyphenIt(String str,int loc)
+    {
+        StringBuilder work = new StringBuilder();
+
+        for(int i=0; i<str.length(); i++) {
+            System.out.println(str.charAt(i));
+            if(i%3==0 && i!=0) {
+                work.append("-");
+            }
+            work.append(str.charAt(i));
+        }
+
+        return work.toString();
     }
 }
